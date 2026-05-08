@@ -35,7 +35,7 @@ Deliverables/
   ├── Deliverable 3 - Baseline Models A B and C.ipynb         
   ├── Deliverable 3 - Baseline Models D and E.ipynb
   ├── Deliverable 4 and 5 - Process Reward GRPO with Full TARA Loop.ipynb            
-  └──  Deliverable 6 - Final Paper.pdf 
+  └── Deliverable 6 - Final Paper.pdf 
 
 Scripts/
   ├── Baseline Models D and E.py            
