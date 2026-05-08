@@ -1,6 +1,6 @@
 # TB-ViTAR: Spatially-Grounded Process-Reward Reinforcement Learning for Tuberculosis Detection
 
-**Group 44** | Fazal Rehman (27100294) & Asad Ayub (27100413)
+**Group 44** | Asad Ayub (27100413) & Fazal Rehman (27100294)
 
 ---
 
