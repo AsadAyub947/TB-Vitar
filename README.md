@@ -35,6 +35,8 @@ TB-ViTAR (Tuberculosis Visual Thinking and Reasoning) is a progressive framework
 ├── report/
 │   └── main.tex            
 └── README.md
+└── SOA Survey.pdf
+
 ```
 
 ## Methodology
