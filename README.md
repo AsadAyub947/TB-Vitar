@@ -29,20 +29,17 @@ We propose TB-ViTAR, a framework for automated TB chest X-ray diagnosis that com
 ## Directory Structure
 
 ```
-notebooks/
-  ├── Dataset and Annotations.ipynb              # Dataset exploration, VQA pair generation, annotation parsing
-  ├── Baseline Models A B and C.ipynb            # ResNet-50, DenseNet-121, CLIP zero-shot and linear probe
-  ├── Baseline Models D and E.ipynb              # Qwen2-VL SFT and Outcome GRPO (Modal execution)
-  └── Process Reward GRPO with Full TARA Loop.ipynb  # Process-reward GRPO + TARA loop (Modal execution)
+Deliverables/
+  ├── Deliverable 1 - SOA Survey Report.pdf 
+  ├── Deliverable 2 - Dataset and Annotations.ipynb     
+  ├── Deliverable 3 - Baseline Models A B and C.ipynb         
+  ├── Deliverable 3 - Baseline Models D and E.ipynb
+  ├── Deliverable 4 and 5 - Process Reward GRPO with Full TARA Loop.ipynb            
+  └──  Deliverable 6 - Final Paper.pdf 
 
-scripts/
-  ├── Baseline Models D and E.py                 # Full Modal deployment script for Baselines D and E
-  └── Process Reward GRPO with Full TARA Loop.py # Full Modal deployment script for Improvement F
-
-report/
-  └── main.tex                                   # Final paper in ICML 2021 format
-
-SOA Survey.pdf                                   # State-of-the-art survey covering 14 papers
+Scripts/
+  ├── Baseline Models D and E.py            
+  └── Process Reward GRPO with Full TARA Loop.py 
 README.md
 ```
 
@@ -51,8 +48,8 @@ README.md
 Clone this repository:
 
 ```bash
-git clone https://github.com/fazalreh5/tb-vitar.git
-cd tb-vitar
+git clone https:github.com/AsadAyub947/TB-Vitar.git
+cd TB-Vitar
 ```
 
 Install Python dependencies:
@@ -262,4 +259,4 @@ CS437/CS5317/EE414/EE513 — Deep Learning, LUMS Spring 2026.
 
 ---
 
-For additional details, refer to the final paper in `report/main.tex` or the SOA Survey in `SOA Survey.pdf`. Contact the authors via GitHub issues for any questions.
+For additional details, refer to the final paper in `Deliverables` or the SOA Survey in `SOA Survey.pdf`. Contact the authors via GitHub issues for any questions.
