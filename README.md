@@ -10,15 +10,16 @@ TB-ViTAR (Tuberculosis Visual Thinking and Reasoning) is a progressive framework
 
 ## Key Results
 
+
 | Method | Accuracy | Sensitivity | Specificity | Mean IoU | IoU@0.5 | Train Reward |
-|--------|----------|-------------|-------------|---------|
-| A: ResNet-50 | 0.8605 | 0.8577 | 0.8667| — | — | — |
-| B: DenseNet-121 | 0.8534 | 0.8608  | 0.8368 | — | — | — |
-| C: CLIP Zero-shot | 0.6629 | 0.5896  |  0.8263 | — | — | — |
-| C: CLIP Linear Probe | 0.8664  | 0.8381 | 0.9298 | — | — | — |
-| D: Qwen2-VL SFT | 0.904 | 0.887 | 0.950 | 0.193 | 0.173 | — |
-| **E: Outcome GRPO** | **0.931** | **0.925** | 0.938 | **0.293** | **0.500** | 0.493 |
-| F: Process GRPO with Full TARA Loop| 0.920 | 0.908 | 0.938 | 0.273 | 0.308 | **0.725** |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **A: ResNet-50** | 0.8605 | 0.8577 | 0.8667 | — | — | — |
+| **B: DenseNet-121** | 0.8534 | 0.8608 | 0.8368 | — | — | — |
+| **C: CLIP Zero-shot** | 0.6629 | 0.5896 | 0.8263 | — | — | — |
+| **C: CLIP Linear Probe** | 0.8664 | 0.8381 | 0.9298 | — | — | — |
+| **D: Qwen2-VL SFT** | 0.9040 | 0.8870 | 0.9500 | 0.193 | 0.173 | — |
+| **E: Outcome GRPO** | **0.9310** | **0.9250** | 0.9380 | **0.293** | **0.500** | 0.493 |
+| **F: Process GRPO (TARA)** | 0.9200 | 0.9080 | 0.9380 | 0.273 | 0.308 | **0.725** |
 
 ## Repository Structure
 
