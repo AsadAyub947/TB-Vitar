@@ -237,7 +237,7 @@ All three VLM variants (D, E, F) achieve 100% TARA format compliance throughout 
 
 ## References
 
-The detailed list of references is available in the associated research paper (`report/main.tex`) and the SOA Survey (`SOA Survey.pdf`).
+The detailed list of references is available in the associated research paper (`Deliverables/Final Paper.pdf`) and the SOA Survey (`SOA Survey.pdf`).
 
 Key references include:
 - Liu et al. *Rethinking Computer-Aided Tuberculosis Diagnosis.* CVPR 2020. (**TBX11K dataset**)
@@ -259,4 +259,4 @@ CS437/CS5317/EE414/EE513 — Deep Learning, LUMS Spring 2026.
 
 ---
 
-For additional details, refer to the final paper in `Deliverables` or the SOA Survey in `SOA Survey.pdf`. Contact the authors via GitHub issues for any questions.
+For additional details, refer to the final paper in `Deliverables/Final Paper.pdf ` or the SOA Survey in `SOA Survey.pdf`. Contact the authors via GitHub issues for any questions.
