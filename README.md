@@ -10,14 +10,15 @@ TB-ViTAR (Tuberculosis Visual Thinking and Reasoning) is a progressive framework
 
 ## Key Results
 
-| Method | Accuracy | Sensitivity | Specificity | IoU@0.5 |
+| Method | Accuracy | Sensitivity | Specificity | Mean IoU | IoU@0.5 | Train Reward |
 |--------|----------|-------------|-------------|---------|
-| A: ResNet-50 | 0.690 | 0.990 | 0.008 | — |
-| B: DenseNet-121 | 0.720 | 0.980 | 0.140 | — |
-| C: CLIP | 0.643 | 0.561 | 0.831 | — |
-| D: Qwen2-VL SFT | 0.904 | 0.887 | 0.950 | 0.173 |
-| **E: Outcome GRPO** | **0.931** | **0.925** | 0.938 | **0.500** |
-| F: Process GRPO | 0.920 | 0.908 | 0.938 | 0.308 |
+| A: ResNet-50 | 0.8605 | 0.8577 | 0.8667| — | — | — |
+| B: DenseNet-121 | 0.8534 | 0.8608  | 0.8368 | — | — | — |
+| C: CLIP Zero-shot | 0.6629 | 0.5896  |  0.8263 | — | — | — |
+| C: CLIP Linear Probe | 0.8664  | 0.8381 | 0.9298 | — | — | — |
+| D: Qwen2-VL SFT | 0.904 | 0.887 | 0.950 | 0.193 | 0.173 | — |
+| **E: Outcome GRPO** | **0.931** | **0.925** | 0.938 | **0.293** | **0.500** | 0.493 |
+| F: Process GRPO with Full TARA Loop| 0.920 | 0.908 | 0.938 | 0.273 | 0.308 | **0.725** |
 
 ## Repository Structure
 
@@ -82,8 +83,8 @@ Upload notebooks to Kaggle with TBX11K dataset attached. Enable GPU T4 accelerat
 ```bash
 pip install modal
 modal setup
-python -m modal run run_notebook2.py
-python -m modal run run_notebook3.py
+python -m modal run Baseline Models D and E.py 
+python -m modal run Process Reward GRPO with Full TARA Loop.py  
 ```
 
 ## Dataset
@@ -103,8 +104,8 @@ python -m modal run run_notebook3.py
 
 ## Authors
 
-- Fazal Rehman (27100294)
 - Asad Ayub (27100413)
+- Fazal Rehman (27100294)
 
 ## License
 
