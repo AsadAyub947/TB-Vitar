@@ -205,8 +205,6 @@ L_SFT = -E[ Σ_t log p_θ(y_t | I, q, y_{<t}) ]
 | Learning rate | 2e-5 |
 | Batch size | 4 |
 | Gradient accumulation | 4 |
-| Hardware | A100-40 GB |
-| Training time | ~90 min |
 | Loss progression | 0.842 → 0.314 → 0.187 |
 
 SFT is an essential warm-start stage — without it, neither GRPO variant can reliably produce TARA-formatted responses, making the format reward component uninformative and destabilizing early RL.
@@ -238,8 +236,6 @@ Training uses **260 VQA pairs (180 positive, 80 negative)**. The outcome reward 
 | num_generations | 4 |
 | β_KL | 0.04 |
 | Steps | 100 |
-| Hardware | A100-40 GB |
-| Training time | ~38 min |
 
 ---
 
@@ -279,8 +275,6 @@ normalized = (r_think + r_spatial + r_clinical + r_answer + r_format + 0.76) / 1
 | num_generations | 2 |
 | β_KL | 0.04 |
 | Max completion tokens | 192 |
-| Hardware | A100-80 GB |
-| Training time | ~51 min |
 
 ---
 
