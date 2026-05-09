@@ -1,8 +1,7 @@
 # TB-ViTAR: Iterative Spatially-Grounded Reasoning with Process Rewards for Tuberculosis Diagnosis in Chest X-rays
 
 **Authors:** Asad Ayub (27100413) · Fazal Rehman (27100294)  
-**Course:** CS437/CS5317/EE414/EE513 — Deep Learning, LUMS Spring 2026  
-**Code:** https://github.com/AsadAyub947/TB-Vitar  
+**Course:** CS437 — Deep Learning 
 **Paper:** `Deliverables/Deliverable 6 - Final Paper.pdf`
 
 ---
@@ -59,12 +58,11 @@ TB-Vitar/
 │   ├── Deliverable 1 - SOA Survey Report.pdf
 │   ├── Deliverable 2 - Dataset and Annotations.ipynb
 │   ├── Deliverable 3 - Baseline Models A B and C.ipynb
-│   ├── Deliverable 3 - Baseline Models D and E.ipynb
-│   ├── Deliverable 4 and 5 - Process Reward GRPO with Full TARA Loop.ipynb
+│   ├── Deliverable 4 - First Improvement.ipynb
+│   ├── Deliverable 5 - Second Improvement.ipynb
 │   └── Deliverable 6 - Final Paper.pdf
 ├── Scripts/
-│   ├── Baseline Models D and E.py
-│   └── Process Reward GRPO with Full TARA Loop.py
+│   └── Script for Second Improvement.py
 └── README.md
 ```
 
@@ -88,7 +86,7 @@ pip install torch==2.4.0 torchvision==0.19.0 transformers==4.48.3 \
     qwen-vl-utils matplotlib timm clip
 ```
 
-For Modal-based notebooks (Baselines D, E, and Improvement F):
+For Modal-based notebooks (First Improvement and Second Improvement):
 
 ```bash
 pip install modal
@@ -109,7 +107,7 @@ We use **TBX11K** (Liu et al., CVPR 2020), containing **8,400 chest X-rays** acr
 
 PASCAL VOC bounding-box annotations are provided for all 800 TB-positive cases (799 valid boxes, 99.9% coverage). A stratified 70/15/15 train/val/test split with `seed=42` yields **5,880 / 1,260 / 1,260 images**, preserving the 9.5% TB-positive rate throughout all splits.
 
-> **Note:** CNN baselines (A–C) are evaluated on the full 1,260-sample test set (9.5% TB+). VLM models D and E are evaluated on a balanced 260-sample set (180 positive, 80 negative); Improvement F on a balanced 200-sample set (including 40 localization pairs). Direct cross-group accuracy comparisons must account for these different evaluation distributions.
+> **Note:** CNN baselines (A–C) are evaluated on the full 1,260-sample test set (9.5% TB+). VLM models D and E are evaluated on a balanced 260-sample set (180 positive, 80 negative); F on a balanced 200-sample set (including 40 localization pairs). Direct cross-group accuracy comparisons must account for these different evaluation distributions.
 
 ---
 
@@ -246,7 +244,7 @@ Training uses **260 VQA pairs (180 positive, 80 negative)**. The outcome reward 
 
 ---
 
-### Improvement F: Process-Reward GRPO with Full TARA Loop
+### Second Improvement: Process-Reward GRPO with Full TARA Loop
 
 The core limitation of the First Improvement is that a model producing partially correct reasoning but an incorrect binary decision collapses to reward 0.0, receiving **no gradient signal for what it did correctly**. Improvement F decomposes the reward into **five independent components** — one per TARA step — providing partial-credit feedback at every gradient update:
 
@@ -295,7 +293,6 @@ normalized = (r_think + r_spatial + r_clinical + r_answer + r_format + 0.76) / 1
 | GPU | NVIDIA T4 | A100-40 GB | A100-40 GB | A100-80 GB |
 | Model | ResNet-50 / DenseNet-121 / CLIP | Qwen2-VL-2B-Instruct | Qwen2-VL-2B + LoRA | Qwen2-VL-2B + LoRA |
 | LoRA library | — | PEFT | Unsloth | Unsloth |
-| Training time | ~1–2 hr | ~90 min | ~38 min | ~51 min |
 
 ---
 
@@ -380,14 +377,14 @@ Removing `r_spatial` causes the **largest IoU@0.5 drop (−0.112)** despite havi
 
 The 180:80 distribution maximizes accuracy but at the cost of conservative sensitivity. This motivated the strict 1:1 balance (200:200) used in Improvement F, which achieves the best overall sensitivity (90.8%).
 
-#### Effect of num_generations (First Improvement with Unsloth)
+#### Effect of num_generations (First Improvement with Unsloth and TARA)
 
 | num_gen | Reward Variance | Mean Reward | IoU@0.5 |
 |:---:|:---:|:---:|:---:|
 | 2 (standard LoRA limit) | 0.209 | 0.461 | 0.194 |
 | 4 (Unsloth enabled) | **0.161** | **0.493** | **0.250** |
 
-Increasing to 4 generations reduces reward variance (0.209 → 0.161) and raises mean reward (0.461 → 0.493). Unsloth's 80% VRAM reduction makes this feasible on A100-40 GB without OOM errors.
+Increasing to 4 generations reduces reward variance (0.209 → 0.161) and raises mean reward (0.461 → 0.493). Unsloth's 80% 
 
 ---
 
@@ -476,32 +473,6 @@ The five-component budget (`r_answer`: 0.50, `r_spatial`: 0.20, `r_clinical`: 0.
 ### 5. Larger Base Models and Multi-Disease Extension
 
 Scaling to Qwen2-VL-7B or a 13B-parameter radiology VLM, and extending the TARA framework to additional pulmonary diseases (pneumonia, pleural effusion, lung cancer), would test whether the process-reward paradigm generalizes beyond TB. Multi-disease TARA training with shared reward components but disease-specific lexicons represents a natural next step toward a clinically deployable chest X-ray reasoning system.
-
----
-
-## References
-
-| # | Citation |
-|:---:|:---|
-| [1] | Bose et al. *VALOR: Visual Alignment via GRPO for Grounded Radiology Report Generation.* arXiv:2512.16201, 2025. |
-| [2] | Chen et al. *ViTAR: Think Twice to See More — Iterative Visual Reasoning in Medical VLMs.* arXiv:2510.10052, 2025. |
-| [3] | Fan et al. *ChestX-Reasoner: Advancing Radiology Foundation Models with Step-by-Step Verification.* arXiv:2504.20930, 2025. |
-| [4] | Guo et al. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948, 2025. |
-| [5] | Guo, Lu, and Feng. *Med-VRAgent: Medical Visual Reasoning-Enhanced Agents.* EMNLP 2025. |
-| [6] | He et al. *Deep Residual Learning for Image Recognition.* CVPR 2016. |
-| [7] | Hu et al. *LoRA: Low-Rank Adaptation of Large Language Models.* ICLR 2022. |
-| [8] | Huang et al. *Densely Connected Convolutional Networks.* CVPR 2017. |
-| [9] | Jaeger et al. *Automatic Tuberculosis Screening Using Chest Radiographs.* IEEE Trans. Medical Imaging 33(2):233–245, 2014. (Montgomery) |
-| [10] | Jaeger et al. *Two Public Chest X-ray Datasets for Computer-Aided Screening of Pulmonary Diseases.* QIMS 4:475–477, 2014. (Shenzhen) |
-| [11] | Kotei and Thirunavukarasu. *A Review on Deep Learning for TB Detection from Chest X-rays.* ACME 31:455–474, 2024. |
-| [12] | Lai et al. *Med-R1: Reinforcement Learning for Generalizable Medical Reasoning in VLMs.* arXiv:2503.13939, 2025. |
-| [13] | Liu et al. *Rethinking Computer-Aided Tuberculosis Diagnosis.* CVPR 2020. **(TBX11K dataset)** |
-| [14] | Mirugwe et al. *Improving TB Detection in Chest X-rays through Transfer Learning.* JMIRx Med 6:e66029, 2025. |
-| [15] | Pan et al. *MedVLM-R1: Incentivizing Medical Reasoning Capability of VLMs via Reinforcement Learning.* MICCAI 2025. |
-| [16] | Radford et al. *Learning Transferable Visual Models from Natural Language Supervision.* ICML 2021. |
-| [17] | Wang et al. *Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution.* arXiv:2409.12191, 2024. |
-| [18] | World Health Organization. *Global Tuberculosis Report 2023.* WHO Press, Geneva. |
-| [19] | Xu et al. *MedGround-R1: Spatial-Semantic Rewarded GRPO for Medical Image Grounding.* MICCAI 2025. |
 
 ---
 
