@@ -1,7 +1,7 @@
 # TB-ViTAR: Iterative Spatially-Grounded Reasoning with Process Rewards for Tuberculosis Diagnosis in Chest X-rays
 
-**Authors:** Asad Ayub (27100413) · Fazal Rehman (27100294)  
-**Course:** CS437 — Deep Learning 
+**Authors:** Asad Ayub (27100413) | Fazal Rehman (27100294)  
+**Course:** CS437 — Deep Learning
 **Paper:** `Deliverables/Deliverable 6 - Final Paper.pdf`
 
 ---
