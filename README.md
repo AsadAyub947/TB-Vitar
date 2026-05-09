@@ -2,7 +2,6 @@
 
 **Authors:** Asad Ayub (27100413) | Fazal Rehman (27100294)  
 **Course:** CS437 — Deep Learning
-**Paper:** `Deliverables/Deliverable 6 - Final Paper.pdf`
 
 ---
 
